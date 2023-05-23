@@ -49,7 +49,7 @@ public static class ArrayProblemsTests
     }
 
     public static IEnumerable<int> PseudoRandom()
-        => Generate(1337, x => x ^ (x >> 3) + (x << 29));
+        => Generate(137, x => x ^ (x >> 3) + (x << 29));
 
     public static int[] SomeRandomInts
         = PseudoRandom().Take(5).ToArray();
@@ -225,6 +225,6 @@ public static class ArrayProblemsTests
     [TestCaseSource(nameof(TestInputs))]
     public static void OutputContents(int[] input)
     {
-        //Helper.OutputContents(input);
+        Helper.OutputContents(input);
     }
 }
