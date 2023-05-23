@@ -94,7 +94,7 @@ public static class ArrayProblemsTests
     {
         if (input.Length < 2)
         {
-            Assert.Throws<Exception>(() => ArrayProblems.Swap(input, 0, 1));
+            Assert.Throws<IndexOutOfRangeException>(() => ArrayProblems.Swap(input, 0, 1));
         }
         else
         {
@@ -114,7 +114,7 @@ public static class ArrayProblemsTests
     {
         if (input.Length < 1)
         {
-            Assert.Throws<Exception>(() => ArrayProblems.FirstElement(input));
+            Assert.Throws<IndexOutOfRangeException>(() => ArrayProblems.FirstElement(input));
         }
         else
         {
@@ -128,7 +128,7 @@ public static class ArrayProblemsTests
     {
         if (input.Length < 1)
         {
-            Assert.Throws<Exception>(() => ArrayProblems.LastElement(input));
+            Assert.Throws<IndexOutOfRangeException>(() => ArrayProblems.LastElement(input));
         }
         else
         {
@@ -142,7 +142,7 @@ public static class ArrayProblemsTests
     {
         if (input.Length < 1)
         {
-            Assert.Throws<Exception>(() => ArrayProblems.MiddleElement(input));
+            Assert.Throws<IndexOutOfRangeException>(() => ArrayProblems.MiddleElement(input));
         }
         else
         {
@@ -155,7 +155,7 @@ public static class ArrayProblemsTests
     public static void ReverseTest(int[] input)
     {
         var output = input.ToArray();
-        var expected = input.Reverse().ToString();
+        var expected = input.Reverse().ToArray();
         ArrayProblems.Reverse(output);
         Assert.AreEqual(expected, output);
     }
@@ -166,7 +166,7 @@ public static class ArrayProblemsTests
     {
         if (input.Length < 1)
         {
-            Assert.Throws<Exception>(() => ArrayProblems.Min(input, (a,b) => b - a));
+            Assert.Throws<IndexOutOfRangeException>(() => ArrayProblems.Min(input, (a,b) => b - a));
         }
         else
         {
@@ -181,7 +181,7 @@ public static class ArrayProblemsTests
     {
         if (input.Length < 1)
         {
-            Assert.Throws<Exception>(() => ArrayProblems.Max(input, (a, b) => b - a));
+            Assert.Throws<IndexOutOfRangeException>(() => ArrayProblems.Max(input, (a, b) => b - a));
         }
         else
         {
@@ -217,7 +217,7 @@ public static class ArrayProblemsTests
     [TestCaseSource(nameof(TestInputs))]
     public static void HasDuplicatesTest(int[] input)
     {
-        Assert.AreEqual(input.Distinct().Count() == input.Length, 
+        Assert.AreEqual(input.Distinct().Count() != input.Length, 
             ArrayProblems.HasDuplicates(input));
     }
 
@@ -225,6 +225,6 @@ public static class ArrayProblemsTests
     [TestCaseSource(nameof(TestInputs))]
     public static void OutputContents(int[] input)
     {
-        Helper.OutputContents(input);
+        //Helper.OutputContents(input);
     }
 }
